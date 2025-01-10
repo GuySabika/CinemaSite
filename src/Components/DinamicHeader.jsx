@@ -13,7 +13,7 @@ function DinamicHeader() {
                         <NavLink to="/add/actor">Actor</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/add/people">User</NavLink>
+                        <NavLink to="/add/people">People</NavLink>
                     </li>
                     <li>
                         <NavLink to="/add/projection">Projection</NavLink>

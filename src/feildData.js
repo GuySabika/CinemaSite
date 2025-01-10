@@ -1,8 +1,8 @@
 const feildData = {
-    movie: { feilds: ["Name", "StartingAt", "AgeRestriction", "ReleaseDate"] },
-    actor: { feilds: ["Name", "Biography", "Genre"] },
-    user: { feilds: ["Name", "Age", "Has snack"] },
-    projection: { feilds: ["Movie", "Data", "Price"] },
-    ticket: { feilds: ["Projection", "User"] }
+    movie: { feildsInput: ["Name", "StartingAt", "AgeRestriction", "ReleaseDate"], fieldSelect: ["Actor"] },
+    actor: { feildsInput: ["Name", "Biography", "Genre"], fieldSelect: [] },
+    people: { feildsInput: ["Name", "Age"], fieldSelect: [] },
+    projection: { feildsInput: ["Data", "Price"], fieldSelect: ["Movie"] },
+    ticket: { feildsInput: [], fieldSelect: ["Projection", "People"] }
 };
 export default feildData;
