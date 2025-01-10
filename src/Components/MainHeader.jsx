@@ -1,5 +1,5 @@
 // components/Header.jsx
-import { NavLink } from 'react-router'
+import { NavLink } from 'react-router';
 
 function MainHeader() {
     return (
@@ -7,10 +7,10 @@ function MainHeader() {
             <nav className="nav-bar">
                 <ul className="nav-list">
                     <li>
-                        <NavLink to="/add">Cinema Management</NavLink>
+                        <NavLink to="/add" className="nav-link">Cinema Management</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/">Project Movies</NavLink>
+                        <NavLink to="/" className="nav-link">Project Movies</NavLink>
                     </li>
                 </ul>
             </nav>
@@ -18,4 +18,4 @@ function MainHeader() {
     );
 }
 
-export default MainHeader
+export default MainHeader;

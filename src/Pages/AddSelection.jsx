@@ -1,9 +1,9 @@
 import Button from "../Components/Button.jsx";
 
-export default function selectCategory({ style }) {
+export default function AddSelection({ style }) {
   const options = ["Movie", "Actor", "User", "Projection", "Ticket"];
   return (
-    <div className={style}>
+    <div className={`add-selection ${style}`}>
       {options.map((option, index) => (
         <Button key={index} text={option} />
       ))}
