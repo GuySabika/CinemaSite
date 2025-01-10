@@ -1,5 +1,4 @@
-import React from 'react';
-import { NavLink, Outlet } from 'react-router'
+import { Outlet } from 'react-router'
 import MainHeader from '../Components/MainHeader.jsx';
 // import FindMealProvider from '../Contexts/FindMealContext';
 // import MealIdContextProvider from '../Contexts/MealIdContext';

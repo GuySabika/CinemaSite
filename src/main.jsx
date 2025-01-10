@@ -4,6 +4,7 @@ import './index.css'
 import { BrowserRouter, Route, Routes } from 'react-router'
 import MyLayout from './Layouts/MyLayout.jsx'
 import App from './App.jsx'
+import AddSelection from './Pages/AddSelection.jsx'
 // import FindMeal from './Pages/FindMeal.jsx'
 // import MealsId from './Pages/IdMeal.jsx'
 // import Ingredients from './Pages/Ingredients.jsx'
@@ -16,7 +17,8 @@ createRoot(document.getElementById('root')).render(
       <Routes>
         <Route element={<MyLayout />}>
           <Route index path="/" element={<App />} />
-          {/* <Route path="/add" element={<Managment />} />
+          <Route path="/add" element={<AddSelection />} />
+          {/* <Route path="/add" element={<AddSelection />} />
           <Route path="/add/movie" element={<AddMovie />} />
           <Route path="/add/actor" element={<AddActor />} />
           <Route path="/add/people" element={<AddPeople />} />

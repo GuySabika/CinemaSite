@@ -1,9 +1,9 @@
+import { NavLink } from "react-router";
 
-
-export default function Button(options) {
-    return (
-        <button className={options.className} onClick={options.onClick}>
-            {options.text}
-        </button>
-    )
+export default function Button({ text }) {
+  return (
+    <div>
+      <NavLink to={`/add/${text}`}>{text}</NavLink>
+    </div>
+  );
 }
