@@ -1,19 +1,26 @@
-import InputField from "../Components/InputField";
-import SelectField from "../Components/selectField.jsx";
+// components/AddCategory.jsx
+import { FormProvider } from '../Contexts/FormContext.jsx';
+import FormFields from '../Components/FormFields.jsx';
+import SubmitButton from "../Components/SubmitButton.jsx";
 
 export default function AddCategory({ DataFields, category }) {
+    const url = "http://192.168.1.62:3000/";
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+    };
+
     return (
-        <div className="form-container">
-            <h3 className="category-title">Add {category}</h3>
-            <form>
-                {DataFields.feildsInput.length > 0 ? DataFields.feildsInput.map((field, index) => (
-                    <InputField key={index} fieldName={field} />
-                )) : <></>}
-                {DataFields.fieldSelect.length > 0 ? DataFields.fieldSelect.map((field, index) => (
-                    < SelectField key={index} fieldName={field} />
-                )) : <></>}
-                <button className={`button`}>Submit</button>
-            </form>
-        </div>
+        <FormProvider DataFields={DataFields}>
+            <div className="form-container">
+                <h3 className="category-title">Add {category}</h3>
+                <form onSubmit={handleSubmit}>
+                    <FormFields DataFields={DataFields} url={url} />
+                    <SubmitButton
+                        serverLink={url + `${category}`}
+                    />
+                </form>
+            </div>
+        </FormProvider>
     );
 }
