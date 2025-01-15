@@ -1,4 +1,4 @@
-export default function InputField({ fieldName }) {
+export default function InputField({ fieldName, value, onChange }) {
     return (
         <div className="input-field">
             <label className="input-label">{fieldName}</label>
@@ -6,6 +6,8 @@ export default function InputField({ fieldName }) {
                 type="text"
                 className="input-box"
                 placeholder={`Enter ${fieldName.toLowerCase()}`}
+                value={value}
+                onChange={onChange}
             />
         </div>
     );

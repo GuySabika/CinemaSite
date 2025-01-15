@@ -1,14 +1,24 @@
 import { useState, useEffect } from 'react';
 
-export default function SelectField({ fieldName }) {
+export default function SelectField({ fieldName, serverLink, value, onChange }) {
     const [selections, setSelections] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    const elementById = async (id) => {
+        try {
+            const response = await fetch((serverLink + fieldName).toLowerCase() + `/${id}`);
+            if (!response.ok) throw new Error('Failed to fetch selection');
+            const data = await response.json();
+            return data.Movie.Name;
+        } catch (err) {
+            setError(err.message);
+        }
+    }
     useEffect(() => {
         const fetchSelections = async () => {
             try {
-                const response = await fetch(`http://192.168.1.242:8080/${fieldName.toLowerCase()}`);
+                const response = await fetch((serverLink + fieldName).toLowerCase());
                 if (!response.ok) throw new Error('Failed to fetch selections');
                 const data = await response.json();
                 setSelections(data);
@@ -20,7 +30,7 @@ export default function SelectField({ fieldName }) {
         };
 
         fetchSelections();
-    }, [fieldName]);
+    }, [fieldName, serverLink]);
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
@@ -28,11 +38,11 @@ export default function SelectField({ fieldName }) {
     return (
         <div className="input-field">
             <label className="input-label">{fieldName}</label>
-            <select className="input-box">
+            <select className="input-box" value={value} onChange={onChange}>
                 <option value="">Select {fieldName}</option>
                 {selections.map((item, index) => (
                     <option key={index} value={item._id}>
-                        {item.name || item.title}
+                        {item.Name || "" + elementById(item._id)}
                     </option>
                 ))}
             </select>
