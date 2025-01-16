@@ -1,7 +1,7 @@
 // components/FormFields.jsx
 import { useFormContext } from '../Contexts/FormContext.jsx';
-import InputField from "./InputField";
-import SelectField from "./SelectField";
+import InputField from "./inputField.jsx";
+import SelectField from "./selectField.jsx";
 
 export default function FormFields({ DataFields, url }) {
     const {
