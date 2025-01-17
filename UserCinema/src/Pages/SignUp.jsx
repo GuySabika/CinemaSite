@@ -3,14 +3,14 @@ import feildData from '../feildData';
 import { FormProvider } from '../Contexts/FormContext.jsx';
 import SubmitButton from '../Components/SubmitButton.jsx';
 
-export default function Login({ serverLink }) {
+export default function Signup({ serverLink }) {
 
     return (
-        <FormProvider DataFields={feildData.loging}>
-            <div className="login-page">
+        <FormProvider DataFields={feildData.signup}>
+            <div className="signup-page">
                 {/* <Logo></Logo> */}
-                <UserForm data={feildData.loging} text={"Login"} />
-                <SubmitButton serverLink={serverLink + "/login"} />
+                <UserForm data={feildData.signup} text={"SignUp"} />
+                <SubmitButton serverLink={serverLink + "/signup"} />
             </div>
         </FormProvider>
     );

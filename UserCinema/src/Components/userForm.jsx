@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import InputField from './InputField';
+import InputField from './InputField.jsx';
 import { useFormContext } from '../Contexts/FormContext.jsx';
 
-export default function LoginForm({ data }) {
+export default function UserForm({ data, text }) {
     const { inputValues, setInputValues, validateFields } = useFormContext();
     const [error, setError] = useState('');
 
@@ -25,7 +25,7 @@ export default function LoginForm({ data }) {
 
     return (
         <div className="login-form-container">
-            <h2>Login</h2>
+            <h2>{text}</h2>
             <form onSubmit={handleSubmit}>
                 {data.feildsInput.map((field, index) => (
                     <InputField
