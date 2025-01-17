@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { elementData } from "../feildData.js";
+import GoBackButton from "../Components/GoBackButton";
 
 export default function ShowElement({ category, serverLink }) {
     const [element, setElement] = useState(null);
@@ -50,6 +51,7 @@ export default function ShowElement({ category, serverLink }) {
 
     return (
         <div>
+            <GoBackButton></GoBackButton>
             <h1>{element.Name}</h1>
             {elementData[category.toLowerCase()]?.show.map((fieldName) =>
                 renderField(fieldName)

@@ -5,7 +5,7 @@ export default function UserHomePage() {
             <h1>Welcome to the User Home Page</h1>
             <Button text="Movie" />
             <Button text="Actor" />
-            <Button text="Ticket" />
+            <Button text="Projection" />
         </div>
     );
 }

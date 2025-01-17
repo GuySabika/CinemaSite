@@ -5,5 +5,5 @@ export const feildData = {
 export const elementData = {
     movie: { show: ["Actor", "AgeRestriction", "ReleaseDate"] },
     actor: { show: ["Movies act in", "Genre"] },
-    ticket: { show: ["Price", "Prjections", "Dates", "Hours"] }
+    projection: { show: ["Price", "Movie", "Date", "Hours"] }
 }

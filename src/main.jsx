@@ -17,7 +17,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="/add" element={<AddSelection />} />
           <Route path="/add/movie" element={<AddCategory DataFields={feildData.movie} category={"Movie"} />} />
           <Route path="/add/actor" element={<AddCategory DataFields={feildData.actor} category={"Actor"} />} />
-          <Route path="/add/people" element={<AddCategory DataFields={feildData.people} category={"People"} />} />
+          <Route path="/add/user" element={<AddCategory DataFields={feildData.user} category={"User"} />} />
           <Route path="/add/projection" element={<AddCategory DataFields={feildData.projection} category={"Projection"} />} />
           <Route path="/add/ticket" element={<AddCategory DataFields={feildData.ticket} category={"Ticket"} />} />
         </Route>

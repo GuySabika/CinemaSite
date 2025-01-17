@@ -25,10 +25,10 @@ createRoot(document.getElementById('root')).render(
           <Route path="/homepage" element={<UserHomePage data={feildData} />} />
           <Route path="/homepage/movie" element={<ShowAllCategory serverLink={url} category={"movie"}></ShowAllCategory>} />
           <Route path="/homepage/actor" element={<ShowAllCategory serverLink={url} category={"actor"}></ShowAllCategory>} />
-          <Route path="/homepage/ticket" element={<ShowAllCategory serverLink={url} category={"ticket"}></ShowAllCategory>} />
+          <Route path="/homepage/projection" element={<ShowAllCategory serverLink={url} category={"projection"}></ShowAllCategory>} />
           <Route path="/movie/:id" element={<ShowElement serverLink={url} category={"movie"} />} />
           <Route path="/actor/:id" element={<ShowElement serverLink={url} category={"actor"} />} />
-          <Route path="/ticket/:id" element={<ShowElement serverLink={url} category={"ticket"} />} />
+          <Route path="/projection/:id" element={<ShowElement serverLink={url} category={"projection"} />} />
         </Route>
       </Routes>
     </StrictMode>
