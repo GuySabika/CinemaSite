@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { elementData } from "../feildData.js";
 import GoBackButton from "../Components/GoBackButton";
+import ShowField from "../Components/ShowField.jsx";
 
 export default function ShowElement({ category, serverLink }) {
     const [element, setElement] = useState(null);
@@ -21,38 +22,49 @@ export default function ShowElement({ category, serverLink }) {
             });
     }, [category, serverLink, id]);
 
+
     if (!element) return <div>Loading...</div>;
 
     const renderField = (fieldName) => {
         const value = element[fieldName];
-
+        console.log(fieldName, element, value);
         // Special handling for Actor field
         if (fieldName === "Actor" && Array.isArray(value)) {
             return (
-                <div key={fieldName}>
-                    <h3>{fieldName}:</h3>
-                    <div>
-                        {value.map((actor, index) => (
-                            <p key={index}>{actor.Name}</p>
-                        ))}
-                    </div>
-                </div>
+                <ShowField fieldName={fieldName} element={element}></ShowField>
+            );
+        }
+        else if (fieldName === "Movie") {
+            return (<></>);
+        }
+        else if (fieldName === "Movies act in" && Array.isArray(value)) {
+
+            return (
+                <ShowField fieldName={fieldName} element={element}></ShowField>
+            );
+        }
+        else if (fieldName === "Movies act in") {
+            return (
+                <ShowField serverLink={serverLink} fieldName={fieldName} element={element}></ShowField>
             );
         }
 
         // Default handling for other fields
-        return (
-            <div key={fieldName}>
-                <h3>{fieldName}:</h3>
-                <p>{Array.isArray(value) ? value.join(', ') : value}</p>
-            </div>
-        );
+        else {
+            return (
+                <div key={fieldName}>
+                    <h3>{fieldName}:</h3>
+                    <p>{Array.isArray(value) ? value.join(', ') : value}</p>
+                </div>
+            );
+        }
     };
 
     return (
         <div>
             <GoBackButton></GoBackButton>
-            <h1>{element.Name}</h1>
+            <h1>{element.Name || element.Movie.Name}</h1>
+            {/* {console.log(element.Movie.Name)} */}
             {elementData[category.toLowerCase()]?.show.map((fieldName) =>
                 renderField(fieldName)
             )}
