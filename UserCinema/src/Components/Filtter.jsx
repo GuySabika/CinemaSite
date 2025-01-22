@@ -1,14 +1,11 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
+// import { filterData } from "../feildData";
+// import './Filter.css'
 
-export default function Filter({ serverLink, category, onFilterChange }) {
+export default function Filter({ category, onFilterChange }) {
     const [filterValues, setFilterValues] = useState({});
-    const [data, setData] = useState([]);
-
-    useEffect(() => {
-        fetch(serverLink)
-            .then(response => response.json())
-            .then(data => setData(data));
-    }, [serverLink]);
+    const [data] = useState([]);
+    const [isOpen, setIsOpen] = useState(false);
 
     const handleFilterChange = (key, value) => {
         setFilterValues(prev => ({
@@ -21,15 +18,20 @@ export default function Filter({ serverLink, category, onFilterChange }) {
     const renderMovieFilters = () => (
         <div className="filter-section">
             <input
+                className="filter-input"
                 type="text"
                 placeholder="Movie name"
                 onChange={(e) => handleFilterChange('name', e.target.value)}
             />
             <input
+                className="filter-input"
                 type="date"
-                onChange={(e) => handleFilterChange('releaseDate', e.target.value)}
+                onChange={(e) => handleFilterChange('releasedate', e.target.value)}
             />
-            <select onChange={(e) => handleFilterChange('ageRestriction', e.target.value)}>
+            <select
+                className="filter-select"
+                onChange={(e) => handleFilterChange('ageRestriction', e.target.value)}
+            >
                 <option value="">Select age restriction</option>
                 <option value="G">G</option>
                 <option value="PG">PG</option>
@@ -42,17 +44,24 @@ export default function Filter({ serverLink, category, onFilterChange }) {
     const renderActorFilters = () => (
         <div className="filter-section">
             <input
+                className="filter-input"
                 type="text"
                 placeholder="Actor name"
                 onChange={(e) => handleFilterChange('actorName', e.target.value)}
             />
-            <select onChange={(e) => handleFilterChange('genre', e.target.value)}>
+            <select
+                className="filter-select"
+                onChange={(e) => handleFilterChange('genre', e.target.value)}
+            >
                 <option value="">Select genre</option>
                 <option value="Action">Action</option>
                 <option value="Comedy">Comedy</option>
                 <option value="Drama">Drama</option>
             </select>
-            <select onChange={(e) => handleFilterChange('movie', e.target.value)}>
+            <select
+                className="filter-select"
+                onChange={(e) => handleFilterChange('movie', e.target.value)}
+            >
                 <option value="">Select movie</option>
                 {data.movies?.map(movie => (
                     <option key={movie.id} value={movie.id}>{movie.name}</option>
@@ -64,25 +73,30 @@ export default function Filter({ serverLink, category, onFilterChange }) {
     const renderTicketFilters = () => (
         <div className="filter-section">
             <input
+                className="filter-input"
                 type="number"
                 placeholder="Price above"
                 onChange={(e) => handleFilterChange('priceAbove', e.target.value)}
             />
             <input
+                className="filter-input"
                 type="number"
                 placeholder="Price below"
                 onChange={(e) => handleFilterChange('priceLess', e.target.value)}
             />
             <input
+                className="filter-input"
                 type="number"
                 placeholder="Exact price"
                 onChange={(e) => handleFilterChange('priceEqual', e.target.value)}
             />
             <input
+                className="filter-input"
                 type="time"
                 onChange={(e) => handleFilterChange('hour', e.target.value)}
             />
             <input
+                className="filter-input"
                 type="date"
                 onChange={(e) => handleFilterChange('date', e.target.value)}
             />
@@ -91,9 +105,20 @@ export default function Filter({ serverLink, category, onFilterChange }) {
 
     return (
         <div className="filter-container">
-            {category === 'movie' && renderMovieFilters()}
-            {category === 'actor' && renderActorFilters()}
-            {category === 'ticket' && renderTicketFilters()}
+            <button
+                className="toggle-button"
+                onClick={() => setIsOpen(!isOpen)}
+            >
+                {isOpen ? 'Hide Filters' : 'Show Filters'}
+            </button>
+
+            {isOpen && (
+                <div className="filter-dropdown">
+                    {category === 'movie' && renderMovieFilters()}
+                    {category === 'actor' && renderActorFilters()}
+                    {category === 'ticket' && renderTicketFilters()}
+                </div>
+            )}
         </div>
     );
 }

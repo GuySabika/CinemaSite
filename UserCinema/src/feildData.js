@@ -7,3 +7,8 @@ export const elementData = {
     actor: { show: ["Movies act in", "Genre"] },
     projection: { show: ["Price", "Movie", "Date", "StartingAt"] }
 }
+export const filterData = {
+    movie: { filter: ["actor", "agerestriction", "releasedate"] },
+    actor: { filter: ["movie", "genre"] },
+    projection: { filter: ["price", "date", "time"] }
+}
