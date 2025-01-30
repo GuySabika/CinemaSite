@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 
 
 export default function ShowField({ fieldName, element, serverLink = "" }) {
-    console.log(fieldName, element);
+    // console.log(fieldName, element);
     const [field, setField] = useState([]);
-    console.log("setField", field);
+    // console.log("setField", field);
     useEffect(() => {
         fetch(`${serverLink}movie/get/filterbyactor?actorId=${element._id}`).then(async response => {
             if (!response.ok) {

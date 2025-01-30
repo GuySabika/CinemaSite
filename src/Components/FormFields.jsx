@@ -14,7 +14,7 @@ export default function FormFields({ DataFields, url }) {
 
     return (
         <>
-            {console.log(DataFields.feildsInput)}
+            {/* {console.log(DataFields.feildsInput)} */}
             {DataFields.feildsInput.length > 0 && DataFields.feildsInput.map((field, index) => (
                 <div key={index}>
                     <InputField

@@ -2,12 +2,19 @@ import { useState, useEffect } from "react";
 import Button from "../Components/Button";
 import GoBackButton from "../Components/GoBackButton";
 import Filter from "../Components/Filtter.jsx";
+import { useLoginUserContext } from '../Contexts/LoginUserContext.jsx';
+import { useNavigate } from 'react-router';
 
 export default function ShowAllCategory({ category, serverLink }) {
     const [allCategory, setAllCategory] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
+    const userId = useLoginUserContext();
+    let navigate = useNavigate();
 
     useEffect(() => {
+        if (userId === null || userId === undefined) {
+            navigate('/login');
+        }
         fetch(`${serverLink}${category}`)
             .then(response => {
                 if (!response.ok) {
@@ -25,8 +32,8 @@ export default function ShowAllCategory({ category, serverLink }) {
     }, [category, serverLink]);
 
     const handleFilterChange = (filters) => {
-        console.log(category)
-        console.log(filters)
+        // console.log(category)
+        // console.log(filters)
         let filtered = [...allCategory];
 
         // Apply filters based on category

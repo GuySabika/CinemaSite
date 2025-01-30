@@ -17,7 +17,7 @@ export default function UserForm({ data, text }) {
         e.preventDefault();
         if (validateFields()) {
             // Perform login logic here
-            console.log('Form Values:', inputValues);
+            // console.log('Form Values:', inputValues);
         } else {
             setError('Please fill in all fields');
         }

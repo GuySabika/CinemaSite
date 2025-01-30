@@ -3,12 +3,19 @@ import { useParams } from "react-router-dom";
 import { elementData } from "../feildData.js";
 import GoBackButton from "../Components/GoBackButton";
 import ShowField from "../Components/ShowField.jsx";
+import { useLoginUserContext } from '../Contexts/LoginUserContext.jsx';
+import { useNavigate } from "react-router";
 
 export default function ShowElement({ category, serverLink }) {
     const [element, setElement] = useState(null);
     const { id } = useParams();
+    const userId = useLoginUserContext();
+    let navigate = useNavigate();
 
     useEffect(() => {
+        if (userId === null || userId === undefined) {
+            navigate('/login');
+        }
         fetch(`${serverLink}${category}/${id}`)
             .then((response) => {
                 if (!response.ok) {
@@ -27,7 +34,7 @@ export default function ShowElement({ category, serverLink }) {
 
     const renderField = (fieldName) => {
         const value = element[fieldName];
-        console.log(fieldName, element, value);
+        // console.log(fieldName, element, value);
         // Special handling for Actor field
         if (fieldName === "Actor" && Array.isArray(value)) {
             return (
