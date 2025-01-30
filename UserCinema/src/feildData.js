@@ -8,7 +8,7 @@ export const elementData = {
     projection: { show: ["Price", "Movie", "Date", "StartingAt"] }
 }
 export const filterData = {
-    movie: { filter: ["actor", "agerestriction", "releasedate"] },
-    actor: { filter: ["movie", "genre"] },
-    projection: { filter: ["price", "date", "time"] }
-}
+    movie: { filter: ["name", "releaseDate", "ageRestriction"] },
+    actor: { filter: ["actorName", "genre", "movie"] },
+    projection: { filter: ["priceAbove", "priceLess", "priceEqual", "hour", "date"] }
+};
