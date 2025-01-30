@@ -11,7 +11,7 @@ import ShowAllCategory from './Pages/ShowAllCategory.jsx';
 import ShowElement from './Pages/ShowElement.jsx';
 import MyLayout from './Layouts/MyLayout.jsx';
 
-const url = "http://10.70.1.119:3000/";
+const url = "http://10.69.1.121:3000/";
 
 
 createRoot(document.getElementById('root')).render(
