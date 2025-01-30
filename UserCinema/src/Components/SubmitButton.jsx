@@ -10,6 +10,7 @@ export default function SubmitButton({ serverLink }) {
     const postData = async () => {
         setIsSubmitting(true);
         setMessage({ type: '', content: '' });
+        console.log(serverLink)
         try {
             const response = await fetch(serverLink.toLowerCase(), {
                 method: "POST",
@@ -20,6 +21,7 @@ export default function SubmitButton({ serverLink }) {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
+            console.log(response)
 
             setMessage({ type: 'success', content: 'Data submitted successfully!' });
         } catch (error) {
