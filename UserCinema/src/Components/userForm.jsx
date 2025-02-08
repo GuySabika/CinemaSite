@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import InputField from './InputField.jsx';
+import InputField from './inputField.jsx';
 import { useFormContext } from '../Contexts/FormContext.jsx';
 
 export default function UserForm({ data, text }) {

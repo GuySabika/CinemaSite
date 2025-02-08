@@ -4,7 +4,7 @@ import FormFields from '../Components/FormFields.jsx';
 import SubmitButton from "../Components/SubmitButton.jsx";
 
 export default function AddCategory({ DataFields, category }) {
-    const url = "http://10.70.1.159:3000/";
+    const url = "ENTER YOU NODE SERVER IP";
 
     const handleSubmit = (event) => {
         event.preventDefault();
